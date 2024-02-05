@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="WpfApp1.LaborantView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Background="White">
+        <TabControl x:Name="MainTabControl">
+            <TabItem Header="Профиль">
+                <StackPanel>
+                    <Image Source="default_avatar.jpg" Width="150" HorizontalAlignment="Left" />
+                    <Label x:Name="fullNameLabel" Content="FullName" />
+                    <Label Content="Лаборант" />
+                    <Label x:Name="SessionTimeLabel" />
+                    <Button Content="Выйти" Width="200" HorizontalAlignment="Left" Click="ExitButton_Clicked" />
+                </StackPanel>
+            </TabItem>
+            <TabItem  Header="Приём биоматериала">
+                <StackPanel>
+                    <Label Content="Код пробирки" />
+                    <TextBox  />
+
+                    <Label Content="ФИО пациента" />
+                    <TextBox />
+                    
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="PatientTabItem"  Header="Пациенты">
+                <StackPanel>
+                    <TextBox Width="200" Margin="5" KeyUp="SearchTextBox_KeyUp" />
+                    <DataGrid x:Name="PatientDataGrid" HorizontalAlignment="Center" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FullName}" />
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" />
+                            <DataGridTextColumn Header="E-Mail" Binding="{Binding Email}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="ServicesTabItem" Header="Услуги">
+                <StackPanel>
+                    <TextBox Width="200" Margin="5" KeyUp="SearchTextBox_KeyUp" />
+                    <DataGrid x:Name="ServicesDataGrid" HorizontalAlignment="Center" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Код" Binding="{Binding Code}" />
+                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Сформировать отчёт" />
+        </TabControl>
+
+    </StackPanel>
+</UserControl>
